@@ -1,0 +1,64 @@
+table.acronyms {
+    /* table-layout: fixed; */
+    font-family: Verdana, Geneva, sans-serif;
+    border: 6px solid #FFFFFF;
+    background-color: #EEEEEE;
+    width: 800px;
+    text-align: left;
+    border-collapse: collapse;
+  }
+  table.acronyms td, table.acronyms th {
+    /* border: 4px solid #FFFFFF; */
+    padding: 5px 5px;
+    border-bottom: 3px solid #fff;
+  }
+  table.acronyms tbody td {
+    font-size: 13px;
+  }
+  table.acronyms tr:nth-child(even) {
+    background: #F5F5F5;
+  }
+  table.acronyms tr:hover {
+    background: #fff;
+  }
+  table.acronyms thead {
+    background: #1C6EA4;
+    background: -moz-linear-gradient(top, #5592bb 0%, #327cad 66%, #1C6EA4 100%);
+    background: -webkit-linear-gradient(top, #5592bb 0%, #327cad 66%, #1C6EA4 100%);
+    background: linear-gradient(to bottom, #5592bb 0%, #327cad 66%, #1C6EA4 100%);
+    border-bottom: 2px solid #444444;
+  }
+  table.acronyms thead th {
+    font-size: 15px;
+    font-weight: bold;
+    color: #FFFFFF;
+    border-left: 2px solid #D0E4F5;
+  }
+  table.acronyms thead th:first-child {
+    border-left: none;
+  }
+  
+  table.acronyms tfoot {
+    font-size: 14px;
+    font-weight: bold;
+    color: #FFFFFF;
+    background: #E6E6E6;
+    background: -moz-linear-gradient(top, #ececec 0%, #e8e8e8 66%, #E6E6E6 100%);
+    background: -webkit-linear-gradient(top, #ececec 0%, #e8e8e8 66%, #E6E6E6 100%);
+    background: linear-gradient(to bottom, #ececec 0%, #e8e8e8 66%, #E6E6E6 100%);
+    border-top: 2px solid #444444;
+  }
+  table.acronyms tfoot td {
+    font-size: 14px;
+    text-align: right;
+  }
+  table.acronyms tfoot .links {
+    text-align: right;
+  }
+  table.acronyms tfoot .links a{
+    display: inline-block;
+    background: #A4A4A4;
+    color: #FFFFFF;
+    padding: 2px 8px;
+    border-radius: 5px;
+  }
