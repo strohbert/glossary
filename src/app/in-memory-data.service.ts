@@ -1,9 +1,9 @@
 import { InMemoryDbService } from 'angular-in-memory-web-api';
-import { Acronym } from './acronym';
+import { Phrase } from './phrase';
 
 export class InMemoryDataService implements InMemoryDbService {
   createDb() {
-    const acronyms = [
+    const phrases = [
         {
             id: 11,
             acronym: 'CSFW',
@@ -29,6 +29,6 @@ export class InMemoryDataService implements InMemoryDbService {
             description: 'helps people with pretty printing'
         },
       ];
-    return {acronyms};
+    return {phrases};
   }
 }

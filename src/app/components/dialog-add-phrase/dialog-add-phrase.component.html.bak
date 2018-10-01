@@ -1,7 +1,7 @@
 <!-- <h1 mat-dialog-title>Enter a new phrase</h1>
 <div mat-dialog-content>
   <mat-form-field>
-    <input matInput [(ngModel)]="data.acronym" placeholder="Phrase">
+    <input matInput [(ngModel)]="data.acronym" placeholder="Acronym">
   </mat-form-field>
   <mat-form-field>
     <input matInput [(ngModel)]="data.expression" placeholder="Expression">
@@ -15,19 +15,11 @@
   <button mat-button [mat-dialog-close]="data" cdkFocusInitial>Save</button>
 </div> -->
 
-<h2 mat-dialog-title>Enter new phrase</h2>
+<h2 mat-dialog-title>This is a Dialog title</h2>
 
-<div mat-dialog-content>
-  <mat-form-field>
-    <input matInput placeholder="Phrase">
-  </mat-form-field>
-  <mat-form-field>
-    <input matInput placeholder="Expression">
-  </mat-form-field>
-  <mat-form-field>
-    <input matInput placeholder="Description">
-  </mat-form-field>
-</div>
+<mat-dialog-content>
+  <p> Place content here </p>
+</mat-dialog-content>
 
 <mat-dialog-actions>
   <button class="mat-raised-button" (click)="close()">Close</button>

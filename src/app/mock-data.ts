@@ -1,6 +1,6 @@
-import { Acronym } from './acronym';
+import { Phrase } from './phrase';
 
-export const ACRONYMS: Acronym[] = [
+export const PHRASES: Phrase[] = [
     {
         id: 11,
         acronym: 'CSFW',

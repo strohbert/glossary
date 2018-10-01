@@ -8,8 +8,9 @@ import {
 } from '@angular/material';
 
 
-import { Acronym } from '../../acronym';
-import { AcronymService } from '../../services/acronym.service';
+
+import { Phrase } from '../../phrase';
+import { PhraseService } from '../../services/phrase.service';
 import { DialogAddPhraseComponent } from '../dialog-add-phrase/dialog-add-phrase.component';
 
 @Component({
@@ -18,42 +19,48 @@ import { DialogAddPhraseComponent } from '../dialog-add-phrase/dialog-add-phrase
   styleUrls: ['./table.component.css']
 })
 export class TableComponent implements OnInit {
-  acronyms: Acronym[];
+  phrases: Phrase[];
 
   constructor(
-    private acronymService: AcronymService,
+    private phraseService: PhraseService,
     public dialog: MatDialog
     ) { }
 
-  data = {acronym: '', expression: '', description: ''};
+  data = {phrase: '', expression: '', description: ''};
 
   // openDialog(): void {
   //   const dialogRef = this.dialog.open(DialogComponent, {
   //     width: '250px',
   //     data: {
-  //       acronym: this.data.acronym,
+  //       phrase: this.data.phrase,
   //       expression: this.data.expression,
   //       description: this.data.description
   //       }
   //   });
 
-
-
   ngOnInit() {
-    this.acronymService.getAcronyms()
-      .subscribe(acronyms => this.acronyms = acronyms);
+    console.log('Entering ngOnInit');
+    this.phraseService.getPhrases()
+      .subscribe(phrases => {this.phrases = phrases; console.log('onInit Callback:'); console.log(phrases); } );
+    console.log('Subscribed');
+    console.log(this.phrases);
   }
 
-  openDialog() {
+  delete(phrase: Phrase): void {
+    this.phrases = this.phrases.filter(a => a !== phrase);
+    this.phraseService.deletePhrase(phrase).subscribe();
+  }
+
+  openAddDialog() {
+    window.console.log('openAddDialog...');
     const dialogConfig = new MatDialogConfig();
     this.dialog.open(DialogAddPhraseComponent, dialogConfig);
   }
 
-  delete(acronym: Acronym): void {
-    this.acronyms = this.acronyms.filter(a => a !== acronym);
-    this.acronymService.deleteAcronym(acronym).subscribe();
+  add(acronym: string, expression: string, description: string): void {
+    if (!acronym || !expression || !description) { return; }
+    this.phraseService.addPhrase({ acronym: acronym, expression: expression, description: description } as Phrase)
+      .subscribe(p => this.phrases.push(p)
+    );
   }
-
 }
-
-

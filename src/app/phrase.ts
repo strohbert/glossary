@@ -1,4 +1,4 @@
-export class Acronym {
+export class Phrase {
     id: number;
     acronym: string;
     expression: string;

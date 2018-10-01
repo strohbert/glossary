@@ -1,32 +1,32 @@
-<table class="acronyms">
-  <thead>
-    <tr>
-      <th>Entry</th>
-      <th>Acronym</th>
-      <th>Expression</th>
-      <th>Description</th>
-      <th>DEL</th>
-    </tr>
-  </thead>
+<table class="phrases">
 
   <tfoot>
     <tr>
       <td colspan="5">
         <!-- <div class="links"><a href="#">&laquo;</a> <a class="active" href="#">1</a> <a href="#">2</a> <a href="#">3</a>
           <a href="#">4</a> <a href="#">&raquo;</a></div> -->
-          <button id="add" (click)="openDialog()"><b>+</b></button>
+          <button id="add" (click)="openAddDialog()"><b>+</b></button>
       </td>
     </tr>
   </tfoot>
 
   <tbody>
-    <tr class="rows" *ngFor="let acronym of acronyms">
-      <td width="13%">{{acronym.id}}</td>
-      <td width="17%"><b>{{acronym.acronym}}</b></td>
-      <td width="35%">{{acronym.expression | titlecase }}</td>
-      <td width="45%">{{acronym.description | slice : 0 : 30}}...</td>
-      <td width="10px" style="text-align: right"><button id="delete" title="delete acronym" (click)="delete(acronym)">x</button></td>
+    <tr class="rows" *ngFor="let phrase of phrases">
+      <td width="13%">{{phrase.id}}</td>
+      <td width="17%"><b>{{phrase.acronym}}</b></td>
+      <td width="35%">{{phrase.expression | titlecase }}</td>
+      <td width="45%">{{phrase.description | slice : 0 : 30}}...</td>
+      <td width="10px" style="text-align: right"><button id="delete" title="delete phrase" (click)="delete(phrase)">x</button></td>
     </tr>
   </tbody>
 
+  <thead>
+    <tr>
+      <th>Entry {{ phrases.length }}</th>
+      <th>Phrase</th>
+      <th>Expression</th>
+      <th>Description</th>
+      <th>DEL</th>
+    </tr>
+  </thead>
 </table>
