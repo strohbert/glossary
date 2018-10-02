@@ -2,6 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 import { MatDialogModule } from '@angular/material';
+import { FormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {
   MatButtonModule,
@@ -34,6 +35,7 @@ import { PhraseService } from './services/phrase.service';
     AppRoutingModule,
     HttpClientModule,
     MatDialogModule,
+    FormsModule,
     BrowserAnimationsModule,
     MatFormFieldModule,
     MatInputModule,

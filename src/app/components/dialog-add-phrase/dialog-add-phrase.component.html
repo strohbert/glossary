@@ -1,34 +1,57 @@
-<!-- <h1 mat-dialog-title>Enter a new phrase</h1>
-<div mat-dialog-content>
+<!-- V2
+<h2 mat-dialog-title>Enter new phrase to currently {{ data.count }} phrases</h2>
+
+<form #heroForm="ngForm">
   <mat-form-field>
-    <input matInput [(ngModel)]="data.acronym" placeholder="Phrase">
+    <input matInput required type="text" class="form-control" id="acronym" placeholder="Acronym" [(ngModel)]="data.acronym" name="acronym">
   </mat-form-field>
   <mat-form-field>
-    <input matInput [(ngModel)]="data.expression" placeholder="Expression">
+    <input matInput required type="text" class="form-control" id="expression" placeholder="Expression" [(ngModel)]="data.expression" name="expression">
   </mat-form-field>
   <mat-form-field>
-    <input matInput [(ngModel)]="data.description" placeholder="Description">
+    <input matInput required type="text" class="form-control" id="description" placeholder="Description" [(ngModel)]="data.description" name="description">
   </mat-form-field>
+</form>
+
+  <mat-dialog-actions>
+    <button class="mat-raised-button" type="submit" (click)="save()">Save</button>
+    <button class="mat-raised-button" (click)="close()">Close</button>
+  </mat-dialog-actions>
+
+-->
+
+<div class="container">
+    <h1> {{ this.data.title }}</h1>
+    <form #heroForm="ngForm" (ngSubmit)="onSubmit()" >
+        <!-- {{diagnostic}} -->
+      <div class="form-group">
+        <label for="acronym">Acronym</label>
+        <input type="text" class="form-control" id="acronym" required [(ngModel)]="phrase.acronym" name="acronym" #acronym="ngModel" width="200">
+        </div>
+      <div [hidden]="acronym.valid || acronym.pristine"
+           class="alert alert-danger">
+           Acronym is required
+      </div>
+
+      <div class="form-group">
+        <label for="expression">Expression</label>
+        <input type="text" class="form-control" id="expression" required [(ngModel)]="phrase.expression" name="expression" #expression="ngModel">
+      </div>
+      <div [hidden]="expression.valid || expression.pristine"
+           class="alert alert-danger">
+           expression is required
+      </div>
+
+      <div class="form-group">
+          <label for="description">Description</label>
+          <input type="text" class="form-control" id="description" required [(ngModel)]="phrase.description" name="description" #description="ngModel">
+        </div>
+        <div [hidden]="description.valid || description.pristine"
+           class="alert alert-danger">
+           description is required
+      </div>
+
+        <button type="submit" class="btn btn-success" [disabled]="!heroForm.form.valid">{{this.data.buttontext}}</button>
+        <button type="cancel" class="btn btn-success" (click)="onCancel()">Cancel</button>
+    </form>
 </div>
-<div mat-dialog-actions>
-  <button mat-button (click)="onCancel()">Cancel</button>
-  <button mat-button [mat-dialog-close]="data" cdkFocusInitial>Save</button>
-</div> -->
-
-<h2 mat-dialog-title>Enter new phrase</h2>
-
-<div mat-dialog-content>
-  <mat-form-field>
-    <input matInput placeholder="Phrase">
-  </mat-form-field>
-  <mat-form-field>
-    <input matInput placeholder="Expression">
-  </mat-form-field>
-  <mat-form-field>
-    <input matInput placeholder="Description">
-  </mat-form-field>
-</div>
-
-<mat-dialog-actions>
-  <button class="mat-raised-button" (click)="close()">Close</button>
-</mat-dialog-actions>

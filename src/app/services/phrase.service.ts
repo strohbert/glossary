@@ -37,12 +37,27 @@ export class PhraseService {
     return this.http.delete<Phrase>(url, httpOptions);
   }
 
-  addPhrase (phrase: Phrase): Observable<Phrase> {
+  addPhrase (phrase: Phrase): Observable<Phrase> { // Check status code and refresh view with call to db
     return this.http.post<Phrase>(this.glossaryUrl, phrase, httpOptions);
+  }
+
+  /** POST: update the phrase on the server */
+  updatePhrase (phrase: Phrase): Observable<any> {
+    return this.http.post(this.glossaryUrl, phrase, httpOptions);
   }
 
   getPhrase(id: number): Observable<Phrase> {
     const url = `${this.glossaryUrl}/${id}`;
     return this.http.get<Phrase>(url);
+  }
+
+  /* GET phrases whose name contains search term */
+  searchPhrases(term: string): Observable<Phrase[]> {
+    if (!term.trim()) {
+      // if not search term, return empty hero array.
+      return of([]);
+    }
+    // To be adapted to backend fulltext query
+    return this.http.get<Phrase[]>(`${this.glossaryUrl}/?acronym=${term}`);
   }
 }

@@ -1,6 +1,9 @@
 export class Phrase {
-    id: number;
-    acronym: string;
-    expression: string;
-    description: string;
+
+    constructor(
+        public id: number,
+        public acronym: string,
+        public expression: string,
+        public description: string
+    ) {}
 }
