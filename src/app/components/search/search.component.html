@@ -1,7 +1,12 @@
-<div class="form-group">
-    <label for="search">Search in Phrases</label> <input #searchBox id="search-box" (keyup)="search(searchBox.value)" type="text">
-</div>
+<span>
+    <label for="search">Search in {{this.phrasesCount}} Phrases</label> <input #searchBox id="search-box" (keyup)="search(searchBox.value)" type="text">
+    <button id="refresh" title="refresh" (click)="tableComponent.refreshPhrases()">Refresh List</button>
+</span>
+
+<!-- display: inline-block -->
+
 <!-- 
+  <label for="search">Search in {{this.phrasesCount}} Phrases</label> <input #searchBox id="search-box" (keyup)="search(searchBox.value)" type="text">
 <ul class="search-result">
     Iterate over observable and subscribe using async 
   <li *ngFor="let phrase of phrases$ | async" >

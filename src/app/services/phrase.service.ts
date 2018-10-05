@@ -6,9 +6,6 @@ import { Observable } from 'rxjs/Observable';
 import { of } from 'rxjs/observable/of';
 
 import { Phrase } from '../phrase';
-import { PHRASES } from '../mock-data';
-
-// import { Http } from '@angular/http';
 
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
@@ -19,15 +16,17 @@ export class PhraseService {
   // private glossaryUrl = 'glossary/v1/phrases';  // URL to web api
   private glossaryUrl = 'api/phrases';  // URL to web api
 
-  constructor( private http: HttpClient) { }
+  constructor(private http: HttpClient) { }
 
-  /** GET ACRONYMS from the server */
+  /** GET Phrases from the server */
   getPhrases(): Observable<Phrase[]> {
-    // return of(PHRASES);
-    console.log('phrase.service.getPhrases...');
-    const ret = this.http.get<Phrase[]>(this.glossaryUrl, httpOptions);
-    console.log(ret);
-    return ret;
+    console.log('PhraseService.getPhrases...');
+
+    return this.http.get<Phrase[]>(this.glossaryUrl, httpOptions)
+    .pipe(
+      tap(phrases => console.log('fetched ' + phrases.length + ' phrases')),
+      catchError(this.handleError('PhraseService.getPhrases', []))
+  );
   }
 
   deletePhrase(phrase: Phrase | number) {
@@ -37,7 +36,7 @@ export class PhraseService {
     return this.http.delete<Phrase>(url, httpOptions);
   }
 
-  addPhrase (phrase: Phrase): Observable<Phrase> { // Check status code and refresh view with call to db
+  insertPhrase (phrase: Phrase): Observable<Phrase> { // Check status code and refresh view with call to db
     return this.http.post<Phrase>(this.glossaryUrl, phrase, httpOptions);
   }
 
@@ -60,4 +59,26 @@ export class PhraseService {
     // To be adapted to backend fulltext query
     return this.http.get<Phrase[]>(`${this.glossaryUrl}/?acronym=${term}`);
   }
+
+
+
+/**
+ * Handle Http operation that failed.
+ * Let the app continue.
+ * @param operation - name of the operation that failed
+ * @param result - optional value to return as the observable result
+ */
+private handleError<T> (operation = 'operation', result?: T) {
+  return (error: any): Observable<T> => {
+
+    // TODO: send the error to remote logging infrastructure
+    console.error(error); // log to console instead
+
+    // TODO: better job of transforming error for user consumption
+    console.log(`${operation} failed: ${error.message}`);
+
+    // Let the app keep running by returning an empty result.
+    return of(result as T);
+  };
+}
 }

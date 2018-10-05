@@ -6,12 +6,10 @@ import {
   MatDialog,
   MatDialogConfig
 } from '@angular/material';
-import { Overlay } from '@angular/cdk/overlay';
 
 import { Phrase } from '../../phrase';
 import { PhraseService } from '../../services/phrase.service';
 import { DialogAddPhraseComponent } from '../dialog-add-phrase/dialog-add-phrase.component';
-import { HeaderRowPlaceholder } from '@angular/cdk/table';
 
 @Component({
   selector: 'app-table',
@@ -20,30 +18,28 @@ import { HeaderRowPlaceholder } from '@angular/cdk/table';
 })
 export class TableComponent implements OnInit {
   phrases: Phrase[];
-// data = {acronym: '', expression: '', description: ''};
+  nPhrases = 0;
   dialogPhrase: Phrase;
 
   constructor(
     private phraseService: PhraseService,
     public dialog: MatDialog,
-    private overlay: Overlay
+    // private overlay: Overlay
     ) { }
 
   ngOnInit() {
-    console.log('Entering ngOnInit');
-    this.phraseService.getPhrases()
-      .subscribe(phrases => {this.phrases = phrases; console.log('onInit Callback:'); console.log(phrases); } );
-    console.log('Subscribed');
-    console.log(this.phrases);
+    console.log('tableComponent.ngOnInit');
+    this.refreshPhrases();
   }
 
   delete(phrase: Phrase): void {
-    this.phrases = this.phrases.filter(a => a !== phrase);
+    // this.phrases = this.phrases.filter(a => a !== phrase); // Old (refresh of local cached list)
     this.phraseService.deletePhrase(phrase).subscribe();
+    this.refreshPhrases();
   }
 
-  openAddDialog() {
-    window.console.log('meth: openAddDialog');
+  openDialogAdd() {
+    console.log('tableComponent.openAddDialog');
 
     const dialogConfig = new MatDialogConfig();
     dialogConfig.data = {
@@ -53,21 +49,22 @@ export class TableComponent implements OnInit {
     };
     const dialogRef = this.dialog.open(DialogAddPhraseComponent, dialogConfig);
 
-    dialogRef.afterClosed().subscribe(value => this.dialogPhrase = value);
+    dialogRef.afterClosed().subscribe(value => {
+      this.dialogPhrase = value;
 
-    window.console.log(this.dialogPhrase);
+      if (this.dialogPhrase) {
+        this.phraseService.insertPhrase(this.dialogPhrase as Phrase
+          ).subscribe(p => console.log('phrase inserted with new id ' + p.id));
+      }
+      this.refreshPhrases();
+    });
 
-    if (this.dialogPhrase) {
-      this.phraseService.addPhrase(this.dialogPhrase as Phrase
-        ).subscribe(p => this.phrases.push(p));
-    }
   }
 
-
-  openEditDialog( phrase: Phrase) {
+  openDialogEdit( phrase: Phrase) {
     const idx = this.phrases.indexOf(phrase);
 
-    window.console.log('meth: openEditDialog');
+    console.log('tableComponent.openDialogEdit');
     const dialogConfig = new MatDialogConfig();
     dialogConfig.data = {
       phrase: phrase,
@@ -77,15 +74,22 @@ export class TableComponent implements OnInit {
     // dialogConfig.scrollStrategy = this.overlay.scrollStrategies.reposition();
     const dialogRef = this.dialog.open(DialogAddPhraseComponent, dialogConfig);
 
-    dialogRef.afterClosed().subscribe(value => this.dialogPhrase = value);
-
-    this.phraseService.updatePhrase(phrase
-      ).subscribe(p => console.log(p));
-
-
+    dialogRef.afterClosed().subscribe(
+      editedPhrase => {
+        this.dialogPhrase = editedPhrase;
+        this.phraseService.updatePhrase(editedPhrase
+          ).subscribe(
+            resultOfUpdateService => {
+            console.log('phraseService.updatePhrase.CallbackResult: ' + resultOfUpdateService);
+            this.refreshPhrases();
+          });
+      }
+    );
   }
 
-  onRefresh() {
-    return null;
+  refreshPhrases() {
+    window.console.log('tableComponent.refreshPhrases');
+    this.phraseService.getPhrases()
+      .subscribe(phrases => {this.phrases = phrases; this.nPhrases = this.phrases.length; } );
   }
 }

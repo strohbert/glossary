@@ -20,38 +20,39 @@
 
 -->
 
-<div class="container">
-    <h1> {{ this.data.title }}</h1>
-    <form #heroForm="ngForm" (ngSubmit)="onSubmit()" >
-        <!-- {{diagnostic}} -->
-      <div class="form-group">
-        <label for="acronym">Acronym</label>
-        <input type="text" class="form-control" id="acronym" required [(ngModel)]="phrase.acronym" name="acronym" #acronym="ngModel" width="200">
-        </div>
-      <div [hidden]="acronym.valid || acronym.pristine"
-           class="alert alert-danger">
-           Acronym is required
-      </div>
+<div class="container" style="float: left">
+  <h1> {{ this.data.title }}</h1>
+  <form #heroForm="ngForm" (ngSubmit)="onSubmit()">
 
-      <div class="form-group">
-        <label for="expression">Expression</label>
-        <input type="text" class="form-control" id="expression" required [(ngModel)]="phrase.expression" name="expression" #expression="ngModel">
-      </div>
-      <div [hidden]="expression.valid || expression.pristine"
-           class="alert alert-danger">
-           expression is required
-      </div>
+    <span class="form-group form-group-acronym col-md-3">
+      <label for="acronym">Acronym</label>
+      <input type="text" class="form-control" id="acronym" required [(ngModel)]="phrase.acronym" name="acronym"
+        #acronym="ngModel" width="200">
 
-      <div class="form-group">
-          <label for="description">Description</label>
-          <input type="text" class="form-control" id="description" required [(ngModel)]="phrase.description" name="description" #description="ngModel">
-        </div>
-        <div [hidden]="description.valid || description.pristine"
-           class="alert alert-danger">
-           description is required
+      <div [hidden]="acronym.valid || acronym.pristine" class="alert alert-danger">
+        Acronym is required
       </div>
+    </span>
 
-        <button type="submit" class="btn btn-success" [disabled]="!heroForm.form.valid">{{this.data.buttontext}}</button>
-        <button type="cancel" class="btn btn-success" (click)="onCancel()">Cancel</button>
-    </form>
+    <span class="form-group form-group-expression col-md-9">
+      <label for="expression">Expression</label>
+      <input type="text" class="form-control" id="expression" required [(ngModel)]="phrase.expression" name="expression"
+        #expression="ngModel">
+      <div [hidden]="expression.valid || expression.pristine" class="alert alert-danger">
+        expression is required
+      </div>
+    </span>
+
+    <div class="form-group">
+      <label for="description">Description</label>
+      <textarea rows="5" type="text" class="form-control" id="description" required [(ngModel)]="phrase.description"
+        name="description" #description="ngModel"></textarea>
+    </div>
+    <div [hidden]="description.valid || description.pristine" class="alert alert-danger">
+      description is required
+    </div>
+
+    <button type="submit" class="btn btn-success" [disabled]="!heroForm.form.valid">{{this.data.buttontext}}</button>
+    <button type="cancel" class="btn btn-success" (click)="onCancel()">Cancel</button>
+  </form>
 </div>

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 import { Observable } from 'rxjs/Observable';
 import { Subject } from 'rxjs/Subject';
@@ -17,12 +17,13 @@ import { TableComponent } from '../table/table.component';
   styleUrls: ['./search.component.css']
 })
 export class SearchComponent implements OnInit {
+  @Input() phrasesCount: number;
   phrases$: Observable<Phrase[]>;
   private searchTerms = new Subject<string>();
 
   constructor(
     private phraseService: PhraseService,
-    private tableComponent: TableComponent) {}
+    protected tableComponent: TableComponent) {}
 
   // Push a search term into the observable stream.
   search(term: string): void {

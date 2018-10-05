@@ -1,6 +1,5 @@
-<app-search></app-search>
+<app-search class="searchbar" [phrasesCount]="nPhrases"></app-search>
 
-<button id="refresh" title="refresh" (click)="refresh()">Refresh</button>
 <table class="phrases">
 
   <tfoot>
@@ -8,18 +7,18 @@
       <td colspan="6">
         <!-- <div class="links"><a href="#">&laquo;</a> <a class="active" href="#">1</a> <a href="#">2</a> <a href="#">3</a>
           <a href="#">4</a> <a href="#">&raquo;</a></div> -->
-          <button id="add" (click)="openAddDialog()"><b>&nbsp;+&nbsp;</b></button>
+          <button id="add" (click)="openDialogAdd()"><b>&nbsp;+&nbsp;</b></button>
       </td>
     </tr>
   </tfoot>
 
   <tbody>
     <tr class="contentrow" *ngFor="let phrase of phrases">
-      <td width="13%">{{phrase.id}}</td>
-      <td width="17%"><b>{{phrase.acronym}}</b></td>
-      <td width="35%">{{phrase.expression | titlecase }}</td>
-      <td width="45%">{{phrase.description | slice : 0 : 30}}...</td>
-      <td width="8px" style="text-align: right"><button id="edit" title="edit phrase" (click)="openEditDialog(phrase)">...</button></td>
+      <td width="11px">{{phrase.id}}</td>
+      <td width="16%"><b>{{phrase.acronym}}</b></td>
+      <td width="34%">{{phrase.expression | titlecase }}</td>
+      <td width="60%">{{phrase.description}}</td>
+      <td width="8px" style="text-align: right"><button id="edit" title="edit phrase" (click)="openDialogEdit(phrase)">...</button></td>
       <td width="8px" style="text-align: right"><button id="delete" title="delete phrase" (click)="delete(phrase)">&nbsp;x&nbsp;</button></td>
     </tr>
   </tbody>

@@ -1,11 +1,17 @@
+.searchbar {
+    margin: auto; /* centers table */
+}
+
 table.phrases {
     /* table-layout: fixed; */
     font-family: Verdana, Geneva, sans-serif;
     border: 6px solid #FFFFFF;
     background-color: #EEEEEE;
-    width: 800px;
+    width: 100%;
+    max-width: 780px;
     text-align: left;
     border-collapse: collapse;
+    margin: auto; /* centers table */
   }
   table.phrases td, table.phrases th {
     /* border: 4px solid #FFFFFF; */
@@ -14,6 +20,10 @@ table.phrases {
   }
   table.phrases tbody td {
     font-size: 13px;
+    /* Hide overflowing text */
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
   }
   table.phrases tr:nth-child(even) {
     background: #F5F5F5;
