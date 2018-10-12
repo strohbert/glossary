@@ -13,7 +13,7 @@ const httpOptions = {
 
 @Injectable()
 export class PhraseService {
-  // private glossaryUrl = 'glossary/v1/phrases';  // URL to web api
+  // private glossaryUrl = 'http://localhost:8080/glossary/v1/phrases';  // URL to web api
   private glossaryUrl = 'api/phrases';  // URL to web api
 
   constructor(private http: HttpClient) { }

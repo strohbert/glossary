@@ -7,28 +7,28 @@
       <td colspan="6">
         <!-- <div class="links"><a href="#">&laquo;</a> <a class="active" href="#">1</a> <a href="#">2</a> <a href="#">3</a>
           <a href="#">4</a> <a href="#">&raquo;</a></div> -->
-          <button id="add" (click)="openDialogAdd()"><b>&nbsp;+&nbsp;</b></button>
+          <button class="btn btn-add" id="add" (click)="openDialogAdd()"><b>&nbsp;+&nbsp;</b></button>
       </td>
     </tr>
   </tfoot>
 
   <tbody>
+    <!--  | orderBy : 'lastName'  : 'asc' -->
     <tr class="contentrow" *ngFor="let phrase of phrases">
       <td width="11px">{{phrase.id}}</td>
       <td width="16%"><b>{{phrase.acronym}}</b></td>
       <td width="34%">{{phrase.expression | titlecase }}</td>
-      <td width="60%">{{phrase.description}}</td>
-      <td width="8px" style="text-align: right"><button id="edit" title="edit phrase" (click)="openDialogEdit(phrase)">...</button></td>
-      <td width="8px" style="text-align: right"><button id="delete" title="delete phrase" (click)="delete(phrase)">&nbsp;x&nbsp;</button></td>
+      <td width="60%">{{phrase.description | slice:0:30 }}</td>
+      <td width="8px" style="text-align: right"><button class="btn" id="edit" title="edit phrase" (click)="openDialogEdit(phrase)">...</button></td>
+      <td width="8px" style="text-align: right"><button class="btn" id="delete" title="delete phrase" (click)="delete(phrase)">&nbsp;x&nbsp;</button></td>
     </tr>
   </tbody>
 
   <thead>
     <tr class="headrow">
-      <!-- <th>Entry [{{ phrases.length }}]</th> -->
       <th>Entry</th>
-      <th>Acronym</th>
-      <th>Expression</th>
+      <th title="Click to toggle sorting of acronyms in ascending/descending order" class="clickable" (click)="sortPhrases('acronym')">Acronym <span class="tooltiptext">Click to toggle sorting of acronyms in ascending/descending order</span></th>
+      <th title="Click to toggle sorting of expressions in ascending/descending order" class="clickable" (click)="sortPhrases('expression')">Expression <span class="tooltiptext">Click to toggle sorting of expressions in ascending/descending order</span></th>
       <th>Description</th>
       <th>EDT</th>
       <th>DEL</th>

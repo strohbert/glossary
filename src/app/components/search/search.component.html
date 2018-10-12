@@ -1,9 +1,7 @@
 <span>
-    <label for="search">Search in {{this.phrasesCount}} Phrases</label> <input #searchBox id="search-box" (keyup)="search(searchBox.value)" type="text">
-    <button id="refresh" title="refresh" (click)="tableComponent.refreshPhrases()">Refresh List</button>
+    <!-- <button id="refresh" title="refresh" (click)="tableComponent.refreshPhrases()">Refresh List</button> -->
+    <input #searchBox id="search-box" (keyup)="search(searchBox.value)" type="text" placeholder="Search {{this.phrasesCount}} Phrases...">
 </span>
-
-<!-- display: inline-block -->
 
 <!-- 
   <label for="search">Search in {{this.phrasesCount}} Phrases</label> <input #searchBox id="search-box" (keyup)="search(searchBox.value)" type="text">

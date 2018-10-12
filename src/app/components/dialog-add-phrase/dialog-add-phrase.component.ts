@@ -32,7 +32,7 @@ export class DialogAddPhraseComponent implements OnInit {
 
   onCancel() {
     console.log('onCancel');
-    this.dialogRef.close();
+    this.dialogRef.close( false);
   }
 
 

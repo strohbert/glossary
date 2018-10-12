@@ -7,20 +7,20 @@ export class InMemoryDataService implements InMemoryDbService {
         {
             id: 11,
             acronym: 'CSFW',
-            expression: 'client server framework',
-            description: 'helps managing client server communication'
+            expression: 'Client Server Framework',
+            description: 'Helps managing client server communication'
         },
         {
             id: 12,
             acronym: 'REST',
             expression: 'REpresentational State Transfer',
-            description: 'specifies how a client and a server exchange data'
+            description: 'Specifies how a client and a server exchange data'
         },
         {
             id: 13,
             acronym: 'TIBCO',
-            expression: 'real-time communication',
-            description: 'Survived the dot com bubble'
+            expression: 'The Information Bus Company',
+            description: 'Real-Time Communication. Survived the dot com bubble'
         },
         {
             id: 14,
@@ -90,6 +90,105 @@ export class InMemoryDataService implements InMemoryDbService {
 '(DSMS) that is designed to use standards-compliant SQL queries to process unstructured and structured data ' +
 'streams in real-time. Unlike SQL queries executed in a traditional RDBMS, which return a result and exit, ' +
 'SQL queries executed in a RDSMS do not exit, generating results continuously as new data become available.'
+        },
+        {
+            id: 22,
+            acronym: 'MOM',
+            expression: 'Message Oriented Middleware',
+            description: ''
+        },
+        {
+            id: 23,
+            acronym: 'AMQP',
+            expression: 'Advanced Message Queuing Protocol',
+            description: ''
+        },
+        {
+            id: 24,
+            acronym: 'MQTT',
+            expression: 'Message Queue Telemetry Transport',
+            description: ''
+        },
+        {
+            id: 25,
+            acronym: 'TIB/RV',
+            expression: 'Rendezvous',
+            description: 'The messaging system of TIBCO'
+        },
+        {
+            id: 26,
+            acronym: 'AMQ',
+            expression: 'Apache Active Message Queque',
+            description: ''
+        },
+        {
+            id: 27,
+            acronym: 'VFEI',
+            expression: 'Virtual Factory Equipment Interface',
+            description: ''
+        },
+        {
+            id: 28,
+            acronym: 'DAD',
+            expression: 'Defect Attribute Database',
+            description: 'Collects visual inspection and test audit data.'
+        },
+        {
+            id: 29,
+            acronym: 'NIRDA',
+            expression: 'NIKON Inspection Review and Defect Cause Code Assignment',
+            description: 'Allows for imagary to be reviewed and defect cause codes to be assigned.'
+        },
+        {
+            id: 30,
+            acronym: 'SWAMI',
+            expression: '?',
+            description: 'Wafer map and defect visualization UI for DAD data; allows users to scrap and unscrap parts'
+        },
+        {
+            id: 31,
+            acronym: 'DAD NG',
+            expression: 'New DAD next generation application',
+            description: 'See DAD?!'
+        },
+        {
+            id: 32,
+            acronym: 'SWAMI NG',
+            expression: 'New SWAMI next generation application',
+            description: 'See SWAMI?!'
+        },
+        {
+            id: 33,
+            acronym: 'WorkStream',
+            expression: '',
+            description: 'MES for wafer and overmold fab'
+        },
+        {
+            id: 33,
+            acronym: 'iWAC',
+            expression: '',
+            description: 'HPs shop floor control system for integration and automation below MES level.'
+        },
+        {
+            id: 34,
+            acronym: 'SPC',
+            expression: 'Statistical process control',
+            description:
+'Statistical process control is a method of quality control which employs statistical methods to monitor and control a process.'
+        },
+        {
+            id: 35,
+            acronym: 'SDI',
+            expression: '',
+            description:
+'HPs engineering database and analysis system; collects any kind of product and ' +
+'process engineering data during production and testing; includes detailed genealogy data'
+        },
+        {
+            id: 36,
+            acronym: 'Klarity',
+            expression: '',
+            description: 'Yield management and analysis system'
         },
       ];
     return {phrases};

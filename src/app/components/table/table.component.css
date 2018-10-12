@@ -1,5 +1,5 @@
 .searchbar {
-    margin: auto; /* centers table */
+    margin: 0 auto; 
 }
 
 table.phrases {
@@ -7,8 +7,9 @@ table.phrases {
     font-family: Verdana, Geneva, sans-serif;
     border: 6px solid #FFFFFF;
     background-color: #EEEEEE;
-    width: 100%;
+    /* width: 100%; */
     max-width: 780px;
+    min-width: 400px;
     text-align: left;
     border-collapse: collapse;
     margin: auto; /* centers table */
@@ -37,6 +38,8 @@ table.phrases {
     background: -webkit-linear-gradient(top, #5592bb 0%, #327cad 66%, #1C6EA4 100%);
     background: linear-gradient(to bottom, #5592bb 0%, #327cad 66%, #1C6EA4 100%);
     border-bottom: 2px solid #444444;
+    position: sticky;
+    top: 0;
   }
   table.phrases thead th {
     font-size: 15px;
@@ -71,4 +74,54 @@ table.phrases {
     color: #FFFFFF;
     padding: 2px 8px;
     border-radius: 5px;
+  }
+
+  table.phrases .clickable:hover{
+    /* background: rgb(255, 161, 38); */
+    background-color: hsl(30, 100%, 50%);
+    cursor: pointer;
+  }
+
+  table.phrases .clickable span {
+    display: none;
+    color: #000;
+    text-decoration: none;
+    padding: 3px;
+}
+
+table.phrases .clickable:hover span {
+    display: block;
+    position: absolute;
+    background-color: rgb(0, 0, 0);
+    border-radius: 6px;
+    color: #fff;
+    margin: 4px 20px;
+    left: 0px;
+    top: 0px;
+    z-index: 1;
+}
+  /* Style buttons */
+.btn {
+  /* background-color: #dddddd; Blue background */
+  background-color: hsl(30, 5%, 50%);
+  border: none; /* Remove borders */
+  color: white; /* White text */
+  padding: 4px 6px 4px 6px; /* Some padding */
+  font-size: 1.2em; /* Set a font size */
+  font-style: bold; /* Set a font style */
+  cursor: pointer; /* Mouse pointer on hover */
+  border-radius: 5px;
+}
+
+/* Darker background on mouse-over */
+.btn:hover, btn:active{
+  /* background-color: rgb(18, 28, 56); */
+  background-color: hsl(30, 100%, 50%);
+}
+
+  /* Style buttons */
+  .btn-add {
+    background-color: #cccccc; /* Blue background */
+    font-size: 1.4em; /* Set a font size */
+    border: 3px; /* Remove borders */
   }

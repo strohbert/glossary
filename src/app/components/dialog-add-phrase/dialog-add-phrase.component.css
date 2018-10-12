@@ -1,4 +1,4 @@
-@import url('https://unpkg.com/bootstrap@3.3.7/dist/css/bootstrap.min.css');
+/* @import url('https://unpkg.com/bootstrap@3.3.7/dist/css/bootstrap.min.css'); */
 
 .ng-valid[required], .ng-valid.required  {
     border-left: 5px solid #42A948; /* green */
@@ -9,11 +9,37 @@
   }
 
 .ng-untouched[required], .ng-valid.required  {
-    border-left: 5px solid rgb(213, 236, 6); /* yello */
+    border-left: 5px solid rgb(234, 255, 49); /* yello */
   }
 
-.form-group-acronym,
-.form-group-expression  {
-  padding-left: 0;
+/* .form-group-acronym, */
+/* .form-group-expression */
+
+.textarea {
+  width: 100%;
+}
+
+.container,
+label,
+textarea {
+  font-family: Verdana, Geneva, sans-serif;
+}
+
+.form-group,
+.form-control {
+  /* padding-left: 0; */
+  /* width: 100%; */
+  
+  padding: 12px 20px;
+  margin: 8px 0px;
+  /* box-sizing: border-box; */
 }
   
+
+label {
+  display: block;
+}
+
+input {
+  display: inline;
+}

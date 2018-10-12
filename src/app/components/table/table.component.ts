@@ -1,7 +1,7 @@
 import { Component, OnInit, Inject } from '@angular/core';
 // import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
 // import Button
-import { MatDialogRef } from '@angular/material';
+// import { MatDialogRef } from '@angular/material';
 import {
   MatDialog,
   MatDialogConfig
@@ -20,6 +20,9 @@ export class TableComponent implements OnInit {
   phrases: Phrase[];
   nPhrases = 0;
   dialogPhrase: Phrase;
+
+  sortAcronymsAsc = true;
+  sortExpressionsAsc = true;
 
   constructor(
     private phraseService: PhraseService,
@@ -76,6 +79,7 @@ export class TableComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe(
       editedPhrase => {
+        console.log('editedPhrase: ' + JSON.stringify(editedPhrase));
         this.dialogPhrase = editedPhrase;
         this.phraseService.updatePhrase(editedPhrase
           ).subscribe(
@@ -91,5 +95,32 @@ export class TableComponent implements OnInit {
     window.console.log('tableComponent.refreshPhrases');
     this.phraseService.getPhrases()
       .subscribe(phrases => {this.phrases = phrases; this.nPhrases = this.phrases.length; } );
+  }
+
+  // ********************** Sorting phrases in ascending / descending order
+/**
+ * Sorting phrases in ascending
+ *
+ * @param column: string - either acronym or expression to sort corresponding column
+ */
+  sortPhrases(column: string) {
+    let sfunc; // = (p1: Phrase, p2: Phrase) => { return: number };
+
+    if (column === 'acronym') {
+      sfunc = (p1: Phrase, p2: Phrase) => {
+        if (p1.acronym.toLowerCase() > p2.acronym.toLowerCase()) { return this.sortAcronymsAsc ?  1 : -1; }
+        if (p1.acronym.toLowerCase() < p2.acronym.toLowerCase()) { return this.sortAcronymsAsc ? -1 :  1; }
+        return 0;
+      };
+      this.sortAcronymsAsc = !this.sortAcronymsAsc;
+    } else if (column === 'expression') {
+      sfunc = (p1: Phrase, p2: Phrase) => {
+        if (p1.expression.toLowerCase() > p2.expression.toLowerCase()) { return this.sortExpressionsAsc ?  1 : -1; }
+        if (p1.expression.toLowerCase() < p2.expression.toLowerCase()) { return this.sortExpressionsAsc ? -1 :  1; }
+        return 0;
+      };
+      this.sortExpressionsAsc = !this.sortExpressionsAsc;
+    }
+    this.phrases.sort(sfunc);
   }
 }
