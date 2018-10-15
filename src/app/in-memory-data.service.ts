@@ -24,9 +24,9 @@ export class InMemoryDataService implements InMemoryDbService {
         },
         {
             id: 14,
-            acronym: 'HP',
-            expression: 'Hawlett Packard',
-            description: 'Helps people with pretty printing'
+            acronym: 'LIR',
+            expression: 'Lot Incident Report',
+            description: '...?'
         },
         {
             id: 15,
@@ -130,7 +130,7 @@ export class InMemoryDataService implements InMemoryDbService {
         {
             id: 28,
             acronym: 'DAD',
-            expression: 'Defect Attribute Database',
+            expression: 'Die/Defect Attribute Database',
             description: 'Collects visual inspection and test audit data.'
         },
         {
@@ -179,7 +179,7 @@ export class InMemoryDataService implements InMemoryDbService {
         {
             id: 35,
             acronym: 'SDI',
-            expression: '',
+            expression: 'Software-Defined Infrastructure',
             description:
 'HPs engineering database and analysis system; collects any kind of product and ' +
 'process engineering data during production and testing; includes detailed genealogy data'
@@ -189,6 +189,67 @@ export class InMemoryDataService implements InMemoryDbService {
             acronym: 'Klarity',
             expression: '',
             description: 'Yield management and analysis system'
+        },
+        {
+            id: 37,
+            acronym: 'PDCA',
+            expression: 'Plan, Do, Check, Act',
+            description: ''
+        },
+        {
+            id: 38,
+            acronym: 'FCM',
+            expression: 'Factory Control Message',
+            description: ''
+        },
+        {
+            id: 39,
+            acronym: 'EMC',
+            expression: 'Epoxy Mold Compound',
+            description: ''
+        },
+        {
+            id: 40,
+            acronym: 'TIP',
+            expression: 'Technical Implementation Plan',
+            description: ''
+        },
+        {
+            id: 41,
+            acronym: 'TSG',
+            expression: 'Trouble Shooting Guide',
+            description: ''
+        },
+        {
+            id: 42,
+            acronym: 'WLS',
+            expression: 'Whole Lot Scrap',
+            description: ''
+        },
+        {
+            id: 43,
+            acronym: '',
+            expression: 'Ink in the eye',
+            description:
+'A reference descriptor meaning that the orientation of the part is displayed such that the nozzles are facing the viewer.'
+        },
+        {
+            id: 44,
+            acronym: 'OM',
+            expression: 'Overmold',
+            description: 'Parts with EMC substrate'
+        },
+        {
+            id: 45,
+            acronym: 'OOC',
+            expression: 'Out Of Control',
+            description: ''
+        },
+        {
+            id: 46,
+            acronym: 'OOS',
+            expression: 'Out Of Spec',
+            description: ''
         },
       ];
     return {phrases};

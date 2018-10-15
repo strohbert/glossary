@@ -18,7 +18,7 @@
       <td width="11px">{{phrase.id}}</td>
       <td width="16%"><b>{{phrase.acronym}}</b></td>
       <td width="34%">{{phrase.expression | titlecase }}</td>
-      <td width="60%">{{phrase.description | slice:0:30 }}</td>
+      <td width="60%" title="{{phrase.description}}">{{phrase.description | slice:0:30 }}</td>
       <td width="8px" style="text-align: right"><button class="btn" id="edit" title="edit phrase" (click)="openDialogEdit(phrase)">...</button></td>
       <td width="8px" style="text-align: right"><button class="btn" id="delete" title="delete phrase" (click)="delete(phrase)">&nbsp;x&nbsp;</button></td>
     </tr>
